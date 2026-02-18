@@ -1,13 +1,10 @@
 import React from 'react'
 
-export const Auth = () => {
+export const Policy = () => {
   return (
-    <>
     <div className='text-center h-200 pt-20'>
-        <div>Auth</div>
-        <div>to get access</div>
+      <a>Policy</a>
 
     </div>
-    </>
   )
 }

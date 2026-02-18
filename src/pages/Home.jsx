@@ -2,6 +2,9 @@ import React from 'react'
 
 export const Home = () => {
   return (
-    <div>Home</div>
+    <div className='text-center h-200 pt-20'>
+      <a>Home</a>
+
+    </div>
   )
 }
