@@ -4,7 +4,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 export const Footer = () => {
   return (
     <>
-      <footer className='flex text-xl bg-[#00051c] text-white font-mono p-4 pl-25 pr-25 pt-15 pb-15'>
+      <footer className='flex text-xl bg-[#00051c] text-white font-mono p-4 pl-50 pr-50 pt-15 pb-15'>
         <div className='italic'>
           <a>Genius is the world’s biggest collection of song lyrics and musical knowledge</a>
 

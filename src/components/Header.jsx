@@ -4,7 +4,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 export const Header = () => {
   return (
     <>
-      <header className='flex text-xl bg-[#272272] text-white font-mono fixed top-0 w-screen'>
+      <header className='pl-40 flex text-xl bg-gradient-to-r from-[#3500D3] to-[#3910b3] text-white font-mono fixed top-0 w-screen'>
         <div className='ml-4   p-4 italic'>
             <a className=''><Link to="/" className='text-white hover:text-blue-200 transition'>Reviews</Link></a>
         </div>
@@ -15,7 +15,7 @@ export const Header = () => {
           </nav>
         </div>
         
-        <div className='mr-4 p-4 absolute inset-y-0 right-0'>
+        <div className='mr-4 pr-40 p-4 absolute inset-y-0 right-0'>
           <a className='text-white hover:text-blue-400 transition'>
             <Link to="/auth">Авторизация</Link>
           </a>
