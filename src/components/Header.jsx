@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-
+// bg-gradient-to-r from-[#78244C] to-[#611c3d]
 export const Header = () => {
   return (
     <>
-      <header className='pl-40 flex text-base bg-gradient-to-r from-[#3500D3] to-[#3910b3] text-white font-mono fixed top-0 w-screen'>
+      <header className='pl-40 flex text-base bg-[#611c3d] text-white font-mono fixed top-0 w-screen'>
         <div className='ml-4   p-4 italic'>
             <a className=''><Link to="/" className='text-white hover:text-blue-200 transition'>Reviews</Link></a>
         </div>
