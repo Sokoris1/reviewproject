@@ -10,6 +10,8 @@ import { Contacts } from './pages/Contacts'
 import { Policy } from './pages/Policy'
 import { Terms } from './pages/Terms'
 import { Reviews } from './pages/Reviews'
+import { Community } from './pages/Community'
+import { NewMusic } from './pages/NewMusic'
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/policy" element={<Policy />}></Route>
           <Route path="/terms" element={<Terms />}></Route>
           <Route path="/reviews" element={<Reviews />}></Route>
+          <Route path="/community" element={<Community />}></Route>
+          <Route path="/new-music" element={<NewMusic />}></Route>
         </Routes>
 
         <Footer />

@@ -1,1 +1,6 @@
 @import "tailwindcss";
+@layer base {
+.font-comfortaa {
+    font-family: 'Comfortaa';
+}
+}
