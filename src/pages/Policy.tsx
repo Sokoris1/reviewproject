@@ -1,9 +1,7 @@
-import React from 'react'
-
-export const Home = () => {
+export const Policy = () => {
   return (
     <div className='text-center h-200 pt-20'>
-      <a>Home</a>
+      <a>Privacy policy</a>
 
     </div>
   )
