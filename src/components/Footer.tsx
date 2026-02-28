@@ -5,7 +5,11 @@ export const Footer = () => {
     <>
       <footer className='flex bg-black text-white font-comfortaa p-4 pl-40 pr-40 pt-15 pb-15'>
         <div className='italic text-lg w-2xl '>
-          <a className='font-bold block'>harmon<span className="text-[#8400FF]">ix</span> - платформа для тех, кто не равнодушен к музыке и ко всему, что с этим связано. </a>
+          <a className='font-bold block'>
+            <Link to = "/">
+              harmon<span className="text-[#8400FF]">ix</span>
+            </Link> - платформа для тех, кто не равнодушен к музыке и ко всему, что с этим связано. 
+          </a>
           <a className='text-sm text-gray-600'>harmonix @ 2026</a>
         </div>
         <div className='flex ml-auto text-sm'>
