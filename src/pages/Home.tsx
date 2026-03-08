@@ -7,7 +7,7 @@ export const Home = () => {
     <div className="
         mt-16
         top-[57px]
-        h-[383px]
+        h-[355px]
         bg-[linear-gradient(273.18deg,#8400FF_6.02%,#BD75FF_78.19%)]
         text-center pt-10 pl-75 pr-75
         text-shadow-lg/20">
