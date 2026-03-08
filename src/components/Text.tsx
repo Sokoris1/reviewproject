@@ -2,14 +2,14 @@ type SizeType = "small" | "medium" | "large";
 type ColorType = "primary" | "secondary";
 
 interface TextProps {
-  size: SizeType;
+  size?: SizeType;
   color: ColorType;
   text: string;
   className?: string;
 }
 
 export const Text = (props: TextProps) => {
-  const {size, color, text} = props;
+  const {size="medium", color, text, className} = props;
   const defaultClass = "font-comfortaa"
   const classes = {
     sizes: {
@@ -18,18 +18,14 @@ export const Text = (props: TextProps) => {
       large: "text-lg",
     },
     colors: {
-      primary: {
-        text: "text-black",
-      },
-      secondary: {
-        text: "text-white",
-      },
+      primary: "text-black",
+      secondary: "text-white",
     },
   };
 
   return (
     <a 
-        className={`${defaultClass} ${classes.sizes[size]} ${classes.colors[color]}`}>
+        className={`${defaultClass} ${classes.sizes[size]} ${classes.colors[color]} ${className}`}>
     {text}
     </a>
 
