@@ -1,5 +1,5 @@
-type SizeType = "small" | "medium" | "large";
-type ColorType = "primary" | "secondary";
+type SizeType = "small" | "medium" | "large" | "title";
+type ColorType = "primary" | "secondary" | "none";
 
 interface TextProps {
   size?: SizeType;
@@ -16,10 +16,12 @@ export const Text = (props: TextProps) => {
       small: "text-sm",
       medium: "text-base",
       large: "text-lg",
+      title: "text-[1.75rem]",
     },
     colors: {
       primary: "text-black",
       secondary: "text-white",
+      none:"",
     },
   };
 

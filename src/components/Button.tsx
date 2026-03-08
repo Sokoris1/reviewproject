@@ -7,7 +7,7 @@ interface ButtonProps {
   title: string;
   onClick: () => void;
   children?: React.JSX.Element;
-  disabled?: boolean; // новый проп
+  disabled?: boolean; 
 }
 
 export const Button = (props: ButtonProps) => {
