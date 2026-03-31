@@ -1,8 +1,12 @@
+import { MusicReviews } from "../components/MusicReviews"
+
 export const Reviews = () => {
   return (
-    <div className='text-center h-200 pt-20'>
-      <a>Reviews</a>
+    <>
+      <div className='pt-20'>
+            <MusicReviews></MusicReviews>
 
-    </div>
+      </div>
+    </>
   )
 }
