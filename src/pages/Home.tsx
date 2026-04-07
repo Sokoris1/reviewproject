@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { Text } from "../components/Text"
-import { Button } from "../components/Button"
+// import { Button } from "../components/Button"
 import {MusicReviews} from '../components/MusicReviews'
 
 export const Home = () => {
@@ -12,7 +12,8 @@ export const Home = () => {
         h-[355px]
         bg-[linear-gradient(273.18deg,#8400FF_6.02%,#BD75FF_78.19%)]
         text-center pt-10 pl-75 pr-75
-        text-shadow-lg/20">
+        text-shadow-lg/20
+        font-bold">
           
       <a className="text-white text-[25px] font-comfortaa block">
         harmonix - платформа для тех, кто не равнодушен к <br /> музыке и ко всему, что с этим связано.</a>
