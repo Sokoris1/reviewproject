@@ -12,20 +12,44 @@ interface Review {
 export const MusicReviews = () => {
     const [reviews, setReviews] = useState<Review[]>([]);
     const [isFormOpen, setIsFormOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
-        setReviews([
-        {id: 1, artist: "Radiohead", album: "OK Computer", title: "Альбом, изменивший представление о музыке." },
-        {id: 2, artist: "System of a Down", album: "Toxicity", title: "Моментальная классика ню-метала." },
-        {id: 3, artist: "Akai Ko-En", album: "Toumei Nanoka Kuro Nanoka", title: "Синергия шума и красивейшей мелодии." },
-        {id: 4, artist: "Ляпис Трубецкой", album: "Весёлые картинки",title: "Самая проницательная и уникальная работа группы." }
-        ]);
+        fetchReviews();
     }, []);
 
-    const addReview = (artist: string, album: string, title: string) => {
-        const newReview: Review = {id: Date.now(), artist, title, album };
-        setReviews([newReview, ...reviews]);
-        setIsFormOpen(false);
+    const fetchReviews = async() => {
+        try {
+            setLoading(true);
+            const response = await fetch("http://localhost:5000/api/reviews");
+            if (!response.ok) throw new Error('Loading error!');
+            const data = await response.json();
+            setReviews(data);
+        } catch (err) {
+            setError('Loading failed :(');
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const addReview = async (artist: string, album: string, title: string) => {
+        try {
+            const response = await fetch('http://localhost:5000/api/reviews', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({artist, album, title})
+            });
+            if (!response.ok) throw new Error('Ошибка при отправке');
+            
+            const newReview = await response.json();
+            setReviews(prev => [newReview, ...prev]);
+            setIsFormOpen(false);
+        } catch (err) {
+            setError('Не удалось добавить рецензию');
+            console.error(err);
+        }
     };
 
     return (
@@ -42,6 +66,9 @@ export const MusicReviews = () => {
                 </button>
             </div>
 
+        {loading && <p className="text-center text-slate-500">Загрузка...</p>}
+        {error && <p className="text-center text-red-500">{error}</p>}
+
         <div className="grid gap-4">
             {reviews.map((item) => (
             <div key={item.id} className="p-5 bg-white rounded-2xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
@@ -54,8 +81,8 @@ export const MusicReviews = () => {
         <AnimatePresence>
                 {isFormOpen && (
                     <ReviewForm 
-                    onAdd={addReview} 
-                    onClose={() => setIsFormOpen(false)} 
+                        onAdd={addReview} 
+                        onClose={() => setIsFormOpen(false)} 
                     />
                 )}
         </AnimatePresence>
