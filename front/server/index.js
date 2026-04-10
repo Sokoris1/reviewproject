@@ -35,9 +35,9 @@ app.post('/api/reviews', (req, res) =>{
     res.status(201).json(newReview);
 })
 
-app.get("/api/data", (req, res) => {
-    res.json({ message: "Hello from server!", title: "Яблоко" });
-});
+// app.get("/api/data", (req, res) => {
+//     res.json({ message: "Hello from server!", title: "Яблоко" });
+// });
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
