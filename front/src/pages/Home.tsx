@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import { Text } from "../components/Text"
-// import { Button } from "../components/Button"
 import {MusicReviews} from '../components/MusicReviews'
 
 export const Home = () => {
@@ -24,25 +23,6 @@ export const Home = () => {
         пишите об этом всём на нашей платформе.</a>
         
     </div>
-    {/* <div className="pl-48 pt-7 pr-48">
-      <Text
-        color="primary"
-        size="title"
-        text="рецензии"
-        className="font-bold"
-      ></Text>
-    </div> */}
-    
-    {/* <div className='flex pt-7 pl-48'> 
-      <div className="h-[489px] w-[331px] bg-[#434343]"></div>
-      <div className="h-[489px] w-[331px] bg-[#434343] ml-11"></div>
-      <div className="h-[489px] w-[331px] bg-[#434343] ml-11"></div>
-    </div>
-    <div className='flex pt-10 pl-48'> 
-      <div className="h-[489px] w-[331px] bg-[#434343]"></div>
-      <div className="h-[489px] w-[331px] bg-[#434343] ml-11"></div>
-      <div className="h-[489px] w-[331px] bg-[#434343] ml-11"></div>
-    </div> */}
     <MusicReviews></MusicReviews>
     <div className="ml-48 mt-5">
       <Link to="/reviews" className='font-comfortaa text-[#8400FF] underline-offset-4 hover:underline font-medium text-xl'>
@@ -56,16 +36,6 @@ export const Home = () => {
         className="font-bold"
       ></Text>
     </div>
-    {/* <div className='flex pt-7 pl-48'> 
-      <div className="h-[489px] w-[331px] bg-[#434343]"></div>
-      <div className="h-[489px] w-[331px] bg-[#434343] ml-11"></div>
-      <div className="h-[489px] w-[331px] bg-[#434343] ml-11"></div>
-    </div>
-    <div className='flex pt-10 pl-48'> 
-      <div className="h-[489px] w-[331px] bg-[#434343]"></div>
-      <div className="h-[489px] w-[331px] bg-[#434343] ml-11"></div>
-      <div className="h-[489px] w-[331px] bg-[#434343] ml-11"></div>
-    </div> */}
     <div className="ml-48 mt-5">
       <Link to="/reviews" className='font-comfortaa text-[#8400FF] underline-offset-4 hover:underline font-medium text-xl'>
       читать ещё</Link>

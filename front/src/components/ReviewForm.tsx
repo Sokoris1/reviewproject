@@ -54,7 +54,6 @@ export const ReviewForm = ({ onAdd, onClose }: Props) => {
                 
                 <div className="space-y-4">
                 <input 
-                    autoFocus
                     className="w-full px-4 py-3 bg-slate-50 rounded-xl border-none ring-1 ring-slate-200 focus:ring-1 focus:ring-purple-600 outline-none transition-all"
                     placeholder="Исполнитель"
                     value={artist}

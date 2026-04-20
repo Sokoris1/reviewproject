@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom"
+import { useState } from "react"
+import { AuthModal } from "./AuthModal"
 
 export const Header = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+
   return (
     <>
       <header className='pl-40 flex  bg-white shadow-[0_4px_18.9px_-3px_rgba(0,0,0,0.25)] fixed top-0 w-screen'>
@@ -20,13 +24,21 @@ export const Header = () => {
         </div>
         
         <div className='mr-4 pr-40 p-4 absolute inset-y-0 right-0'>
-          <a className='font-comfortaa font-normal text-[18px] text-black border border-black rounded-[12px] w-[91px] h-[30px] flex items-center justify-center bg-transparent hover:underline underline-offset-4'>
-            <Link to="/auth">войти</Link>
-          </a>
+          <button
+            onClick={() => setIsAuthModalOpen(true)}
+            className='font-comfortaa font-normal text-[18px] text-black border border-black rounded-[12px] w-[91px] h-[30px] flex items-center justify-center bg-transparent hover:underline underline-offset-4 cursor-pointer'
+          >
+            войти
+          </button>
         </div>
 
       </header>
-        
+
+      <AuthModal 
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        initialMode="login"
+      />
     </>
   )
 }

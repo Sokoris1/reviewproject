@@ -13,6 +13,8 @@ import { Terms } from './pages/Terms'
 import { Reviews } from './pages/Reviews'
 import { Community } from './pages/Community'
 import { NewMusic } from './pages/NewMusic'
+import { Login } from './components/Login';
+import { Register } from './components/Register';
 
 function App() {
   return (

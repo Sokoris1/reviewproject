@@ -14,8 +14,18 @@ let reviews = [
     { id: 4, artist: "Ляпис Трубецкой", album: "Весёлые картинки", title: "Самая проницательная и уникальная работа группы." }
 ];
 
+let users = [
+    { id: 1, nickname: "test1", mail: "14@dsd.co", password: "Aa123", role: "admin" },
+    { id: 2, nickname: "test2", mail: "13@dsd.co", password: "Aa123", role: "admin" },
+    { id: 3, nickname: "test3", mail: "12@dsd.co", password: "Aa123", role: "admin" }
+];
+
 app.get('/api/reviews', (req, res) => {
     res.json(reviews);
+});
+
+app.get('/api/users', (req, res) => {
+    res.json(users);
 });
 
 app.post('/api/reviews', (req, res) =>{
@@ -35,9 +45,45 @@ app.post('/api/reviews', (req, res) =>{
     res.status(201).json(newReview);
 })
 
-// app.get("/api/data", (req, res) => {
-//     res.json({ message: "Hello from server!", title: "Яблоко" });
-// });
+// Регистрация пользователя
+app.post('/api/register', (req, res) => {
+    const { nickname, mail, password } = req.body;
+    if (!nickname?.trim() || !mail?.trim() || !password?.trim()) {
+        return res.status(400).json({ error: "Все поля обязательны" });
+    }
+
+    // Проверка, существует ли пользователь с таким email или nickname
+    const existingUser = users.find(user => user.mail === mail.trim() || user.nickname === nickname.trim());
+    if (existingUser) {
+        return res.status(409).json({ error: "Пользователь с таким email или nickname уже существует" });
+    }
+
+    const newUser = {
+        id: Date.now(),
+        nickname: nickname.trim(),
+        mail: mail.trim(),
+        password: password.trim(), // В реальном приложении пароль должен быть хэширован
+        role: "user"
+    };
+
+    users.push(newUser);
+    res.status(201).json({ message: "Пользователь зарегистрирован", user: { id: newUser.id, nickname: newUser.nickname, mail: newUser.mail, role: newUser.role } });
+});
+
+// Авторизация пользователя
+app.post('/api/login', (req, res) => {
+    const { mail, password } = req.body;
+    if (!mail?.trim() || !password?.trim()) {
+        return res.status(400).json({ error: "Email и пароль обязательны" });
+    }
+
+    const user = users.find(user => user.mail === mail.trim() && user.password === password.trim());
+    if (!user) {
+        return res.status(401).json({ error: "Неверный email или пароль" });
+    }
+
+    res.status(200).json({ message: "Авторизация успешна", user: { id: user.id, nickname: user.nickname, mail: user.mail } });
+});
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
