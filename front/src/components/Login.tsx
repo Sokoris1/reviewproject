@@ -62,6 +62,7 @@ export const Login = ({ onSwitchToRegister, onSuccess }: LoginProps) => {
           </div>
         )}
 
+        <div className="mb-4">
           <input
             type="email"
             placeholder="Email"
@@ -70,7 +71,9 @@ export const Login = ({ onSwitchToRegister, onSuccess }: LoginProps) => {
             required
             className="w-full px-3 py-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500"
           />
+        </div>
 
+        <div className="mb-4">
           <input
             type="password"
             placeholder="Пароль"
@@ -79,6 +82,9 @@ export const Login = ({ onSwitchToRegister, onSuccess }: LoginProps) => {
             required
             className="w-full px-3 py-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500"
           />
+        </div>
+
+        <div className="mb-4"></div>
 
         <button
           type="submit"

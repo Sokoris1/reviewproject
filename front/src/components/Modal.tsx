@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 interface ModalProps {
@@ -16,7 +17,7 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
         };
 
         document.addEventListener('keydown', handleEsc);
-        document.body.style.overflow = 'hidden'; // блокируем скролл фона
+        //document.body.style.overflow = 'hidden'; // блокируем скролл фона
 
         return () => {
             document.removeEventListener('keydown', handleEsc);
@@ -27,11 +28,21 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     if (!isOpen) return null;
 
     return (
-        <div
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
             onClick={onClose}
         >
-            <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.1 }}
+                className="relative"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <button
                     onClick={onClose}
                     aria-label="Закрыть"
@@ -40,7 +51,7 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
                 ✕
                 </button>
                 {children}
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
