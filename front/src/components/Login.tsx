@@ -50,10 +50,10 @@ export const Login = ({ onSwitchToRegister, onSuccess }: LoginProps) => {
     };
 
   return (
-    <form className="font-comfortaa bg-white p-8 rounded-lg shadow-md w-full max-w-md min-h-[450px] flex flex-col justify-between" onSubmit={(e) => {
+    <form className="font-comfortaa bg-white p-8 rounded-lg shadow-md w-full max-w-md min-h-[350px] flex flex-col justify-between" onSubmit={(e) => {
         e.preventDefault();
         handleLogin();
-      }} >
+      }}>
         <h2 className="text-2xl font-bold text-center mb-6">Вход</h2>
 
         {error && (
@@ -83,8 +83,6 @@ export const Login = ({ onSwitchToRegister, onSuccess }: LoginProps) => {
             className="w-full px-3 py-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500"
           />
         </div>
-
-        <div className="mb-4"></div>
 
         <button
           type="submit"

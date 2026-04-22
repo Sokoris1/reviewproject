@@ -45,14 +45,12 @@ app.post('/api/reviews', (req, res) =>{
     res.status(201).json(newReview);
 })
 
-// Регистрация пользователя
 app.post('/api/register', (req, res) => {
     const { nickname, mail, password } = req.body;
     if (!nickname?.trim() || !mail?.trim() || !password?.trim()) {
         return res.status(400).json({ error: "Все поля обязательны" });
     }
 
-    // Проверка, существует ли пользователь с таким email или nickname
     const existingUser = users.find(user => user.mail === mail.trim() || user.nickname === nickname.trim());
     if (existingUser) {
         return res.status(409).json({ error: "Пользователь с таким email или nickname уже существует" });
@@ -62,7 +60,7 @@ app.post('/api/register', (req, res) => {
         id: Date.now(),
         nickname: nickname.trim(),
         mail: mail.trim(),
-        password: password.trim(), // В реальном приложении пароль должен быть хэширован
+        password: password.trim(),
         role: "user"
     };
 
@@ -70,7 +68,6 @@ app.post('/api/register', (req, res) => {
     res.status(201).json({ message: "Пользователь зарегистрирован", user: { id: newUser.id, nickname: newUser.nickname, mail: newUser.mail, role: newUser.role } });
 });
 
-// Авторизация пользователя
 app.post('/api/login', (req, res) => {
     const { mail, password } = req.body;
     if (!mail?.trim() || !password?.trim()) {

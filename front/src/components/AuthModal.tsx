@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Modal } from './Modal';
 import { Login } from './Login';
 import { Register } from './Register';
@@ -18,18 +19,22 @@ export const AuthModal = ({ isOpen, onClose, initialMode = 'login' }: AuthModalP
     }, [isOpen, initialMode]);
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
-        {mode === 'login' ? (
-            <Login
-            onSwitchToRegister={() => setMode('register')}
-            onSuccess={onClose}
-            />
-        ) : (
-            <Register
-            onSwitchToLogin={() => setMode('login')}
-            onSuccess={() => setMode('login')} // после регистрации — на логин
-            />
-        )}
-        </Modal>
+        <AnimatePresence>
+            {isOpen && (
+                <Modal isOpen={isOpen} onClose={onClose}>
+                {mode === 'login' ? (
+                    <Login
+                    onSwitchToRegister={() => setMode('register')}
+                    onSuccess={onClose}
+                    />
+                ) : (
+                    <Register
+                    onSwitchToLogin={() => setMode('login')}
+                    onSuccess={() => setMode('login')} // после регистрации — на логин
+                    />
+                )}
+                </Modal>
+            )}
+        </AnimatePresence>
     );
 };
