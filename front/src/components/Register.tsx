@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Eye, EyeOff } from 'lucide-react';
 
 interface RegisterProps {
   onSwitchToLogin: () => void;
@@ -10,6 +11,7 @@ export const Register = ({ onSwitchToLogin, onSuccess }: RegisterProps) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleRegister = async () => {
         if (!nick.trim() || !email.trim() || !password.trim()) {
@@ -54,14 +56,14 @@ export const Register = ({ onSwitchToLogin, onSuccess }: RegisterProps) => {
     };
 
   return (
-    <form className="font-comfortaa bg-white p-8 rounded-lg shadow-md w-full max-w-md min-h-[450px] flex flex-col justify-between" onSubmit={(e) => {
+    <form className="font-comfortaa bg-white p-8 rounded-lg shadow-md w-[400px] min-h-[450px] flex flex-col justify-between" onSubmit={(e) => {
         e.preventDefault();
         handleRegister();
       }}>
         <h2 className="text-2xl font-bold text-center mb-6">Регистрация</h2>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded ">
             {error}
           </div>
         )}
@@ -87,15 +89,22 @@ export const Register = ({ onSwitchToLogin, onSuccess }: RegisterProps) => {
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 relative">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500"
+            className="w-full px-3 py-2 pr-10 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500"
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+          >
+            {showPassword ? <EyeOff/> : <Eye />}
+          </button>
         </div>
 
         <button

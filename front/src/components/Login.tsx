@@ -1,3 +1,4 @@
+import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 
 interface LoginProps {
@@ -10,6 +11,7 @@ export const Login = ({ onSwitchToRegister, onSuccess }: LoginProps) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = async () => {
         if (!email.trim() || !password.trim()) {
@@ -50,7 +52,7 @@ export const Login = ({ onSwitchToRegister, onSuccess }: LoginProps) => {
     };
 
   return (
-    <form className="font-comfortaa bg-white p-8 rounded-lg shadow-md w-full max-w-md min-h-[350px] flex flex-col justify-between" onSubmit={(e) => {
+    <form className="font-comfortaa bg-white p-8 rounded-lg shadow-md w-[400px] min-h-[350px] flex flex-col justify-between" onSubmit={(e) => {
         e.preventDefault();
         handleLogin();
       }}>
@@ -73,15 +75,22 @@ export const Login = ({ onSwitchToRegister, onSuccess }: LoginProps) => {
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 relative">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Пароль"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full px-3 py-2 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500"
+            className="w-full px-3 py-2 pr-10 border border-purple-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500"
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+          >
+            {showPassword ? <EyeOff/> : <Eye />}
+          </button>
         </div>
 
         <button

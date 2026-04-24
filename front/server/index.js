@@ -20,6 +20,10 @@ let users = [
     { id: 3, nickname: "test3", mail: "12@dsd.co", password: "Aa123", role: "admin" }
 ];
 
+app.get('/', (req, res) => {
+    res.json({ message: "Server is running", reviews, users });
+});
+
 app.get('/api/reviews', (req, res) => {
     res.json(reviews);
 });
